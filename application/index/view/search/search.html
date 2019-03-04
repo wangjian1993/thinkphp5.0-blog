@@ -1,0 +1,48 @@
+{include file="public/header" /}
+
+<!--顶部通栏-->
+
+
+<div class="position">搜索：<span style="color:#f00; font-weight:bold;">{$keywords}</span></div>
+
+<div class="overall">
+
+    <div class="left">
+
+        {volist name="searchres" id="vo"}
+        <div class="xnews2">
+            <div class="pic"><a target="_blank" href="{:url('article/index',array('arid'=>$vo['id']))}">
+                <img src="{if condition=" $vo['pic'] neq ''"}__IMG__{$vo.pic}{else /}__PUBLIC__/images/error.png{/if}"
+                alt=""/>
+            </a></div>
+            <div class="dec">
+                <h3><a target="_blank" href="{:url('article/index',array('arid'=>$vo['id']))}">{$vo.title}</a></h3>
+                <div class="time">发布时间：{$vo.time|date='Y-m-d H:i'}</div>
+                <p>{$vo.desc}</p>
+                <div class="time">
+                    <?php
+			$arr=explode(',', $vo['keywords']);
+			foreach ($arr as $k=>$v) {
+                    echo "<a href='http://127.0.0.1/tp5/public/index.php/index/search/index?keywords=$v'>$v</a>";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        {/volist}
+
+
+        <div class="pages">
+            <div class="plist">
+                {$searchres->render()}
+            </div>
+        </div>
+    </div>
+
+    {include file="public/right" /}
+
+</div>
+{include file="public/footer" /}
+
+</body>
+</html>

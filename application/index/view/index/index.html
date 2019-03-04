@@ -1,0 +1,45 @@
+{include file="public/header"}
+
+<!--顶部通栏-->
+
+
+<div class="position"></div>
+
+<div class="overall">
+
+    <div class="left">
+        {volist name="article" id="vo"}
+        <div class="xnews2">
+            <div class="pic"><a target="_blank" href="20160920156216.html">
+                <img src="{if condition=" $vo['pic'] neq ''"}__IMG__/{$vo.pic}{else /}__INDEX__/images/error.png{/if}" alt="{$vo.title}"/></a></div>
+            <div class="dec">
+                <h3><a target="_blank" href="{:url('article/index',array('arid'=>$vo['id']))}">{$vo.title}</a></h3>
+                <div class="time">发布时间：{$vo.time|date='Y-m-d H:i'}</div>
+                <p>{$vo.desc}</p>
+                <div class="time">
+                    <?php $arr=explode(',', $vo['keywords']);
+			foreach ($arr as $k=>$v) {
+                    echo "<a href='' style='background: #ff6278;color: #fff;'>$v</a>";
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        {/volist}
+        <div class="pages">
+            <div class="plist">
+                {$article|raw}
+            </div>
+        </div>
+    </div>
+
+
+    {include file="public/right"}
+
+</div>
+
+{include file="public/footer"}
+
+
+</body>
+</html>

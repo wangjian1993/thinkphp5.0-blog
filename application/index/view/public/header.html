@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>PEPSI个人博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="PEPSI个人博客"/>
+    <meta name="description" content="PEPSI个人博客"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <link href="__INDEX__/style/lady.css" type="text/css" rel="stylesheet"/>
+    <script type='text/javascript' src='__INDEX__/style/ismobile.js'></script>
+</head>
+
+<body>
+
+<div class="ladytop">
+    <div class="nav">
+        <div class="left"><a href=""><img src="__INDEX__/images/hunshang.png" alt="wed114婚尚"></a></div>
+        <div class="right">
+            <div class="box">
+                <a href="{:url('index/index')}" rel='dropmenu209'>首页</a>
+                {volist name="navDate" id="vo"}
+                <a href="{:url('cate/index',['cateID' => $vo.id ])}" rel='dropmenu110'>{$vo.catename}</a>
+                {/volist}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hotmenu">
+    <div class="con">热门标签：
+        <a href='qiwenqushi/'>奇闻趣事</a>
+</div>

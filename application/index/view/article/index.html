@@ -1,0 +1,61 @@
+{include file="public/header"}
+
+<!--顶部通栏-->
+<div class="position"><a href='{:url('index/index')}'>首页</a> >  <a href='{:url('cate/index',array('cateID'=>$cates['id']))}'> {$cates.catename} </a></div>
+
+<div class="overall">
+    <div class="left">
+        <div class="scrap">
+            <h1>{$articles.title}</h1>
+            <div class="spread">
+                <span class="writor">发布时间：{$articles.time|date='Y-m-d H:i'}</span>
+                <span class="writor">编辑：{$articles.author}</span>
+                <span class="writor">标签： <?php $arr=explode(',', $articles['keywords']);
+			foreach ($arr as $k=>$v) {
+                    echo "<a href=''>$v</a>";
+                    }
+                    ?></span>
+                <span class="writor">热度：{$articles.click}</span>
+            </div>
+        </div>
+        <div class="takeaway">
+            <span class="btn arr-left"></span>
+            <p class="jjxq">{$articles.desc}</p>
+            <span class="btn arr-right"></span>
+        </div>
+        <div class="substance">{$articles.content|raw}</div>
+
+        <div class="xgread">
+            <div class="til"><h4>相关阅读</h4></div>
+            <div class="lef"><!--相关阅读主题链接--><script src='/jiehun/goto/my-65540.js' language='javascript'></script></div>
+            <div class="rig">
+                <ul>
+                    {volist name="ralateres" id="vo"}
+                    <li><a href="{:url('article/index',array('arid'=>$vo[0]))}" target="_blank">{$vo.1}</a></li>
+                    {/volist}
+
+
+                </ul>
+            </div>
+        </div>
+
+        <!--频道推荐-->
+        <div class="hotsnew">
+            <div class="til"><h4>频道推荐</h4></div>
+            <ul>
+                {volist name="recres" id="vo"}
+                <li><div class="tu"><a href='{:url('article/index',array('arid'=>$vo['id']))}' target="_blank">
+                    <img src="{if condition="$vo['pic'] neq ''"}__IMG__/{$vo.pic}{else /}__PUBLIC__/images/error.png{/if}" alt=""/></a></div><p><a href='{:url('article/index',array('arid'=>$vo['id']))}'>{$vo.title}</a></p></li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+
+    {include file="public/right"}
+
+</div>
+
+{include file="public/footer"}
+
+</body>
+</html>
